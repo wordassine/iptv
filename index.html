@@ -1,0 +1,2839 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IPTV Premium Brasil</title>
+  <meta name="description"
+    content="Baixe os melhores apps IPTV para Android e TV Box com atualizações e conteúdos gratuitos. Youcine, Cine Vision, Eppi Cinema, TV Express." />
+  <meta name="keywords"
+    content="IPTV, Youcine, Cine Vision, Eppi Cinema, TV Express, apps android, baixar apk, filmes grátis, séries, tv box" />
+  <meta name="author" content="Seu Nome" />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* RESET E BASE */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      font-family: 'Inter', 'Poppins', sans-serif;
+      background-color: #121212; /* fundo preto escuro */
+      color: #ffffff; /* texto branco puro */
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 0;
+      padding-top: 70px; /* para header fixo não sobrepor conteúdo */
+    }
+
+    a {
+      color: #0088ff; /* azul vibrante */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      color: #0055aa; /* azul mais escuro no hover */
+      outline: none;
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(18, 18, 18, 0.9);
+      backdrop-filter: saturate(180%) blur(10px);
+      box-shadow: 0 0 15px #0088ff80;
+      z-index: 999;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    header.scrolled {
+      background: #0a0a0aee;
+      box-shadow: 0 0 30px #0088ffcc;
+    }
+
+    .logo {
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: #ffaf00;
+  user-select: none;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 05px #000000;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;    /* Alinha verticalmente ao centro */
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  white-space: nowrap;    /* Evita quebra de linha nos nomes */
+  flex-shrink: 0;         /* Evita que os itens encolham demais */
+}
+
+nav ul li a {
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.3rem 0;
+  position: relative;
+  user-select: none;
+  color: #fff;            /* links brancos no menu */
+  display: inline-block;
+  min-width: 90px;        /* Largura mínima para manter tamanho uniforme */
+  text-align: center;     /* Centraliza o texto dentro do link */
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #0088ff;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+nav ul li a:hover,
+nav ul li a:focus,
+nav ul li a.active {
+  color: #0088ff;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+
+    /* HERO */
+    .hero {
+      width: 100%;
+      height: 100vh;
+      background: url('https://s14.gifyu.com/images/bHYPG.webp') center center / cover no-repeat fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      z-index: 2;
+      color: #ffffff; /* texto branco */
+      text-shadow: 0 0 12px #0088ffaa;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      user-select: text;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      color: #b3d9ffcc;
+      user-select: text;
+    }
+
+    .btn-primary {
+      background-color: #0088ff;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 15px 45px;
+      border-radius: 50px;
+      box-shadow: 0 0 25px #0088ffbb;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #0055aa;
+      box-shadow: 0 0 40px #0055aaee;
+      outline: none;
+      color: #ffffff;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1100px;
+      width: 100%;
+      background-color: #1e1e24;
+      margin: -120px auto 3rem auto;
+      border-radius: 20px 20px 0 0;
+      padding: 4rem 2rem 3rem 2rem;
+      box-shadow: 0 0 0px #0088ff88;
+      user-select: none;
+      z-index: 5;
+      position: relative;
+    }
+
+    /* SECTION TITLES */
+    h2.section-title {
+      color: #ffaf00;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 0 0 20px #000000;
+      user-select: text;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .apps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .apps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .app-card {
+      background-color: #2a2a34;
+      border-radius: 15px;
+      padding: 25px 20px;
+      box-shadow: 0 0 0px #0088ffbb;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      color: #eee;
+    }
+
+    .app-card:hover,
+    .app-card:focus-within {
+      transform: translateY(-12px);
+      box-shadow: 0 0 40px #0088ffdd;
+      outline: none;
+    }
+
+    .app-icon {
+      font-size: 4rem;
+      color: #0088ff;
+      margin-bottom: 18px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .app-title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      text-align: center;
+      user-select: text;
+    }
+
+    .app-desc {
+      flex-grow: 1;
+      font-size: 1rem;
+      color: #c0d8ffcc;
+      margin-bottom: 1.6rem;
+      text-align: center;
+      user-select: text;
+      min-height: 90px;
+    }
+
+    .btn-download {
+      background-color: #0088ff;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 12px 0;
+      border-radius: 50px;
+      box-shadow: 0 0 25px #0088ffbb;
+      text-align: center;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-download:hover,
+    .btn-download:focus {
+      background-color: #0055aa;
+      box-shadow: 0 0 40px #0055aaff;
+      color: #fff;
+      outline: none;
+    }
+
+    /* INSTALAÇÃO */
+    .install-section {
+      background-color: #2a2a34;
+      border-radius: 15px;
+      max-width: 720px;
+      margin: 3rem auto 0 auto;
+      padding: 30px 35px;
+      box-shadow: 0 0 45px #6df109;
+      user-select: none;
+    }
+
+    .install-section h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.8rem;
+      text-align: center;
+      text-shadow: 0 0 10px #ffffff;
+      user-select: text;
+    }
+
+    .install-steps {
+      list-style: none;
+      counter-reset: step-counter;
+      color: #ffffff; /* branco puro */
+      font-size: 1.15rem;
+      line-height: 1.7;
+      user-select: text;
+      padding-left: 0;
+    }
+
+    .install-steps li {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 1.8rem;
+    }
+
+    .install-steps li::before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      background-color: #ffaf00; /* fundo laranja */
+      border-radius: 50%;
+      color: #000000; /* texto preto escuro */
+      font-weight: 700;
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      box-shadow: 0 0 12px #ffffff;
+    }
+
+    /* FAQ */
+    .faq-section {
+      max-width: 900px;
+      margin: 3rem auto 0 auto;
+      user-select: none;
+    }
+
+    .faq-section h3 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 0 0 12px #000000;
+      user-select: text;
+    }
+
+    .faq-item {
+      background-color: #2a2a34;
+      border-radius: 15px;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 0 10px #e8f109;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: #ffaf00; /* laranja */
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-align: left;
+      cursor: pointer;
+      border: none;
+      user-select: none;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover,
+    .faq-question:focus {
+      background-color: #000000;
+      outline: none;
+    }
+
+    .faq-question::after {
+      content: "\f107";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+      font-size: 1.25rem;
+      color: #0088ffdd;
+      user-select: none;
+    }
+
+    .faq-question[aria-expanded="true"]::after {
+      transform: translateY(-50%) rotate(180deg);
+      color: #0055aa;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 2rem;
+      color: #ffffff; /* branco puro */
+      font-size: 1rem;
+      line-height: 1.6;
+      user-select: text;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+    }
+
+    .faq-answer.open {
+      max-height: 1500px; /* valor suficiente para expandir */
+      padding: 1rem 2rem 1.5rem 2rem;
+    }
+
+    /* FOOTER */
+    footer {
+      width: 100%;
+      background-color: #121214;
+      text-align: center;
+      padding: 1.4rem 0;
+      font-size: 1rem;
+      color: #0088ffcc;
+      user-select: none;
+      box-shadow: inset 0 1px 3px #0088ff33;
+      margin-top: auto;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      main {
+        margin: -80px 1rem 2rem 1rem;
+        padding: 3rem 1.5rem 2rem 1.5rem;
+        border-radius: 15px;
+      }
+
+      .btn-primary {
+        font-size: 1.1rem;
+        padding: 12px 30px;
+      }
+    }
+    
+/* Botão hamburger só aparece no mobile */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #0088ff;
+  font-size: 2rem;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+/* Esconde imagem de fundo no desktop */
+nav .menu-bg {
+  display: none;
+}
+
+/* Animação para o conteúdo do menu quando abrir (fade + slide da direita) */
+@keyframes menuFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+nav.open ul {
+  animation: menuFadeSlide 0.4s ease forwards;
+}
+
+/* Estilos para mobile */
+@media (max-width: 768px) {
+  nav {
+    position: fixed;
+    top: 0;
+    right: -260px; /* menu fechado */
+    width: 260px;
+    height: 100vh;
+    background-color: #1e1e24;
+    box-shadow: -3px 0 15px #0088ff88;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease;
+    z-index: 1050;
+    overflow: hidden;
+  }
+
+  nav.open {
+    right: 0;
+  }
+
+  nav .menu-bg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    z-index: 0;
+  }
+
+  nav ul {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    gap: 0.4rem;
+  }
+
+  nav ul li {
+    width: 100%;
+    margin: 0;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 8px 20px;
+    font-size: 1.3rem;
+    color: #ffffff;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Linha divisória estilizada e animada */
+  .menu-divider {
+  width: 100%; /* Agora vai de ponta a ponta */
+  height: 4px; /* Espessura visível */
+  margin: 20px 0; /* Espaço acima e abaixo */
+  background: linear-gradient(90deg, #0088ff, #00ccff, #0088ff); /* Cor viva em toda a linha */
+  animation: pulseLine 2s infinite ease-in-out; /* Animação de pulso */
+  border-radius: 6px;
+  pointer-events: none;
+  }
+}
+
+/* Animação da linha */
+@keyframes pulseLine {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* GALERIA DE APPS */
+.gallery-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: transparent; /* agora pega o fundo principal do site */
+  user-select: none;
+}
+
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+  animation-play-state: paused; /* o JavaScript controla isso agora */
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.gallery-item:nth-child(1) { animation-delay: 0.2s; }
+.gallery-item:nth-child(2) { animation-delay: 0.4s; }
+.gallery-item:nth-child(3) { animation-delay: 0.6s; }
+.gallery-item:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.gallery-image {
+  flex: 1 1 300px;
+  max-width: 480px;
+  height: 270px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 0px #0088ffbb;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-image:hover {
+  transform: translateY(-30px);
+  box-shadow: 0 0 50px #0088ffdd;
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.3s ease;
+  border-radius: 15px;
+}
+
+.gallery-image:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1) saturate(1.2);
+}
+
+.gallery-text {
+  flex: 1 1 300px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-shadow: 0 0 6px #000000;
+  animation: fadeInText 1.2s ease forwards;
+  animation-play-state: paused; /* controlado via JS */
+  opacity: 0;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+  }
+}
+
+.gallery-text h4 {
+  font-size: 2rem;
+  color: #ffaf00;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px #000;
+  transition: color 0.3s ease;
+}
+
+.gallery-text h4:hover {
+  color: #ffffff;
+  text-shadow: 0 0 15px #ffaf00;
+}
+
+/* RESPONSIVO PARA MOBILE */
+@media (max-width: 768px) {
+  .gallery-item {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .gallery-image,
+  .gallery-text {
+    flex: 1 1 100%;
+  }
+
+  .gallery-text h4 {
+    font-size: 1.6rem;
+  }
+}
+    
+.testimonials-section {
+    max-width: 900px;
+    margin: 3rem auto 5rem auto;
+    padding: 0 1rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .testimonials-section h3 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: #00aaff;
+    text-shadow: 0 0 8px #00aaff66;
+  }
+
+  .testimonials-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .testimonial-arrow {
+    background: #00aaff;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  .testimonial-arrow:hover,
+  .testimonial-arrow:focus {
+    background: #0088cc;
+    outline: none;
+  }
+
+  .testimonials-wrapper {
+    overflow: hidden;
+    width: 700px;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .testimonial {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #111;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00aaff33;
+    color: #eee;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .testimonial.active {
+    display: flex;
+    animation: fadeInTestimonial 1.5s ease forwards;
+  }
+
+  @keyframes fadeInTestimonial {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .testimonial img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #00aaff;
+    box-shadow: 0 0 8px #00aaffaa;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+    max-width: 600px;
+  }
+
+  .testimonial-author {
+    font-weight: 700;
+    color: #00aaff;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .testimonials-container {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .testimonial-arrow {
+      font-size: 2rem;
+      padding: 0.4rem 0.8rem;
+    }
+    .testimonials-wrapper {
+      width: 100%;
+    }
+  }
+    
+/* Ícone Assistente Virtual */
+#assist-icon {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #0078d4;
+  color: white;
+  font-size: 28px;
+  padding: 14px 16px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background 0.3s;
+}
+
+#assist-icon:hover {
+  background: #005fa3;
+}
+
+/* Balão da mensagem automática */
+#assist-tooltip {
+  position: absolute;
+  left: 100%;
+  margin-left: 10px;
+  background: #0078d4;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(0);
+  pointer-events: none;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+#assist-tooltip.show {
+  opacity: 1;
+  transform: translateX(10px);
+}
+/* Janela da Assistência */
+#assist-box {
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  width: 320px;
+  max-height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  z-index: 1101;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#assist-box[hidden] {
+  display: none;
+}
+
+/* Cabeçalho */
+.assist-header {
+  background: #0078d4;
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.assist-header h4 {
+  margin: 0;
+  font-size: 18px;
+}
+#assist-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s;
+}
+#assist-close:hover {
+  color: #ff5c5c;
+}
+
+/* Corpo da conversa */
+.assist-body {
+  flex: 1;
+  padding: 16px;
+  background: #f0f4fb;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.msg {
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 85%;
+  word-wrap: break-word;
+}
+.msg.bot {
+  background: #dbefff;
+  color: #003a6b;
+  align-self: flex-start;
+}
+.msg.user {
+  background: #0078d4;
+  color: white;
+  align-self: flex-end;
+}
+.assist-body ul {
+  padding-left: 18px;
+  margin: 6px 0 0 0;
+}
+
+/* Rodapé (input e botão) */
+.assist-footer {
+  display: flex;
+  border-top: 1px solid #ccc;
+  padding: 8px 10px;
+  background: white;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#assist-input {
+  flex-grow: 1;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+  min-width: 0; /* permite encolher */
+}
+
+#assist-input:focus {
+  border-color: #0078d4;
+}
+
+#assist-send {
+  background: #0078d4;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0; /* impede encolhimento */
+  white-space: nowrap;
+  box-sizing: border-box;
+  min-width: 50px;
+}
+
+#assist-send:hover {
+  background: #005fa3;
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 480px) {
+  #assist-send {
+    padding: 8px 10px;
+    font-size: 13px;
+    min-width: 44px;
+  }
+
+  #assist-input {
+    font-size: 13px;
+  }
+
+  #assist-box {
+    width: 90vw;
+    left: 5vw;
+    bottom: 70px;
+  }
+}
+
+    
+:root {
+  --cor-bg: #121721;
+  --cor-gradiente-1: #2563eb;
+  --cor-gradiente-2: #9333ea;
+  --cor-texto: #e0e7ff;
+  --cor-accento: #fbbf24;
+  --transicao-suave: 0.5s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--cor-bg);
+  color: var(--cor-texto);
+}
+
+/* Container principal */
+.termos-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, var(--cor-gradiente-1), var(--cor-gradiente-2));
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteúdo principal */
+.termos-content {
+  max-width: 800px;
+  background: rgba(18, 23, 33, 0.6);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Título principal */
+.termos-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--cor-accento);
+  font-weight: 800;
+  text-shadow: 0 0 5px var(--cor-accento), 0 0 15px var(--cor-accento);
+}
+
+/* Destaque nos títulos das seções */
+.termos-content section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: #fff;
+  background: linear-gradient(90deg, var(--cor-accento), #ff6a00);
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow:
+    0 0 12px rgba(251, 191, 36, 0.5),
+    inset 0 0 8px rgba(255, 255, 255, 0.1);
+  font-weight: 800;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  animation: glowPulse 2.5s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.termos-content section h3:hover {
+  transform: scale(1.05);
+}
+
+/* Seções com animação */
+.termos-content section {
+  margin-bottom: 2.5rem;
+  animation: fadeSlideIn 0.7s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.termos-content section:nth-child(1) { animation-delay: 0.1s; }
+.termos-content section:nth-child(2) { animation-delay: 0.3s; }
+.termos-content section:nth-child(3) { animation-delay: 0.5s; }
+.termos-content section:nth-child(4) { animation-delay: 0.7s; }
+.termos-content section:nth-child(5) { animation-delay: 0.9s; }
+.termos-content section:nth-child(6) { animation-delay: 1.1s; }
+
+/* Estilo das listas */
+.termos-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+.termos-list li {
+  background: rgba(255 255 255 / 0.07);
+  margin-bottom: 15px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--cor-texto);
+  box-shadow:
+    inset 0 0 10px rgba(255 255 255 / 0.06),
+    6px 0 12px var(--cor-accento);
+  transition: background var(--transicao-suave);
+  text-align: justify;
+}
+.termos-list li:hover {
+  background: rgba(255 255 255 / 0.15);
+  box-shadow:
+    inset 0 0 10px rgba(255 255 255 / 0.06),
+    6px 0 22px var(--cor-accento);
+  cursor: default;
+}
+
+/* Links internos */
+.termos-content a {
+  color: var(--cor-accento);
+  font-weight: 600;
+  text-decoration: none;
+}
+.termos-content a:hover {
+  text-decoration: underline;
+}
+
+/* Animação entrada suave */
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efeito de brilho pulsante para os títulos */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 12px rgba(251, 191, 36, 0.5),
+      inset 0 0 8px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(255, 200, 50, 0.8),
+      inset 0 0 12px rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Ajustes Mobile */
+@media (max-width: 767px) {
+  .termos-title {
+    font-size: 2.4rem;
+  }
+
+  .termos-content {
+    padding: 30px 20px;
+  }
+
+  .termos-content section h3 {
+    font-size: 1.5rem;
+    padding: 10px 16px;
+    text-align: center;
+  }
+
+  .termos-list li {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
+}
+
+    
+    
+:root {
+  --cor-bg-contato: #0f1624;
+  --cor-accento-contato: #fbbf24;
+  --cor-texto-contato: #e0e7ff;
+  --cor-banner-gradiente-1: #2563eb;
+  --cor-banner-gradiente-2: #9333ea;
+  --transicao-suave: 0.4s ease;
+}
+
+/* Seção principal */
+.contato-section {
+  background: var(--cor-bg-contato);
+  color: var(--cor-texto-contato);
+  padding: 60px 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.contato-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 1200px;
+  width: 100%;
+  gap: 40px;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* Lado esquerdo - contatos */
+.contato-info {
+  flex: 0 0 320px;
+  min-width: 280px;
+}
+
+.contato-title {
+  font-size: 2.8rem;
+  margin-bottom: 32px;
+  font-weight: 900;
+  color: var(--cor-accento-contato);
+  text-shadow: 0 0 10px var(--cor-accento-contato);
+}
+
+.contato-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contato-list li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255 255 255 / 0.05);
+  padding: 18px 24px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow:
+    inset 0 0 10px rgba(255 255 255 / 0.1),
+    4px 0 15px var(--cor-accento-contato);
+  transition: background var(--transicao-suave);
+  cursor: default;
+}
+
+.contato-list li:hover {
+  background: rgba(255 255 255 / 0.12);
+  box-shadow:
+    inset 0 0 15px rgba(255 255 255 / 0.15),
+    6px 0 20px var(--cor-accento-contato);
+}
+
+.contato-icon {
+  font-size: 2.4rem;
+  color: var(--cor-accento-contato);
+  flex-shrink: 0;
+}
+
+.contato-list h4 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.contato-list p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--cor-texto-contato);
+  word-break: break-word;
+}
+
+.contato-list li div {
+  max-width: 100%;
+  word-break: break-word;
+}
+
+/* Banners */
+.contato-banners {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 40px;
+  min-width: 280px;
+  box-sizing: border-box;
+}
+
+.contato-banners .contato-banner {
+  flex: 1 1 300px;
+  padding: 40px 30px;
+  border-radius: 20px;
+  color: #fff;
+  text-align: center;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  min-height: 400px;
+  cursor: default;
+  transition: transform var(--transicao-suave), box-shadow var(--transicao-suave);
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.contato-banners .contato-banner:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+}
+
+.contato-banner h3 {
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.contato-banner p {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin: 0 auto;
+  max-width: 280px;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.btn-contato {
+  margin-top: 24px;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 40px;
+  font-size: 1.3rem;
+  font-weight: 900;
+  cursor: pointer;
+  user-select: none;
+  align-self: center;
+  min-width: 200px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: background var(--transicao-suave), box-shadow var(--transicao-suave);
+  letter-spacing: 0.03em;
+}
+
+/* WhatsApp */
+.whatsapp-banner {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  box-shadow: 0 0 40px #25D366;
+  color: white;
+  border: 3px solid #128C7E;
+}
+
+.whatsapp-banner::before {
+  content: "📱";
+  position: absolute;
+  font-size: 8rem;
+  top: -20px;
+  right: 20px;
+  opacity: 0.15;
+  filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1));
+}
+
+.whatsapp-banner .btn-contato {
+  background: #075e54;
+  color: white;
+  box-shadow: 0 0 20px #075e54;
+}
+
+.whatsapp-banner .btn-contato:hover {
+  background: #128c7e;
+  box-shadow: 0 0 30px #128c7e;
+}
+
+/* Telegram */
+.telegram-banner {
+  background: linear-gradient(135deg, #0088cc, #005f99);
+  box-shadow: 0 0 40px #0088cc;
+  color: white;
+  border: 3px solid #006DBF;
+}
+
+.telegram-banner::before {
+  content: "💬";
+  position: absolute;
+  font-size: 8rem;
+  top: -15px;
+  right: 15px;
+  opacity: 0.12;
+  filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1));
+}
+
+.telegram-banner .btn-contato {
+  background: #006dbf;
+  color: white;
+  box-shadow: 0 0 20px #000000;
+}
+
+.telegram-banner .btn-contato:hover {
+  background: #0088cc;
+  box-shadow: 0 0 30px #0088cc;
+}
+
+/* Ícones de redes sociais */
+.redes-sociais {
+  margin-top: 50px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icone-social {
+  width: 50px;
+  height: 50px;
+  color: var(--cor-accento-contato);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icone-social:hover {
+  transform: scale(1.2);
+  color: #ffffff;
+}
+
+/* Responsivo */
+@media (max-width: 950px) {
+  .contato-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .contato-info {
+    flex: 1 1 100%;
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+
+  .contato-banners {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contato-banners .contato-banner {
+    flex: 1 1 100%;
+    max-width: 600px;
+    min-height: auto;
+  }
+
+  .contato-title {
+    font-size: 2.4rem;
+  }
+
+  .contato-banner h3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contato-list li {
+    padding: 14px 18px;
+    gap: 14px;
+  }
+
+  .contato-icon {
+    font-size: 2rem;
+  }
+
+  .contato-list h4 {
+    font-size: 1.2rem;
+  }
+
+  .contato-list p {
+    font-size: 1rem;
+  }
+
+  .btn-contato {
+    padding: 12px 24px;
+    font-size: 1rem;
+    min-width: 140px;
+  }
+}
+    
+    .whatsapp-button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 18px;
+  background-color: #25d366; /* verde WhatsApp */
+  color: white;
+  font-weight: 600;
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(37, 211, 102, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.whatsapp-button:hover,
+.whatsapp-button:focus {
+  background-color: #1ebe57;
+  box-shadow: 0 6px 12px rgba(30, 190, 87, 0.6);
+  outline: none;
+}
+
+    .typing::after {
+  content: '';
+  display: inline-block;
+  width: 1ch;
+  animation: blink 0.6s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+ .msg.bot.typing {
+  font-style: italic;
+  color: #666;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 180px; /* largura fixa para o texto e os pontos */
+}
+
+.msg.bot.typing::after {
+  content: '...';
+  display: inline-block;
+  animation: dots 1.5s steps(3, end) infinite;
+  font-weight: bold;
+  color: #333;
+  margin-left: 5px;
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: transparent;
+    text-shadow:
+      .25em 0 0 transparent,
+      .5em 0 0 transparent;
+  }
+  40% {
+    color: #333;
+    text-shadow:
+      .25em 0 0 transparent,
+      .5em 0 0 transparent;
+  }
+  60% {
+    text-shadow:
+      .25em 0 0 #333,
+      .5em 0 0 transparent;
+  }
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 #333,
+      .5em 0 0 #333;
+  }
+}
+   
+    .assist-options {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.assist-options button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #00c853;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.assist-options button.assist-no {
+  background-color: #d50000;
+}
+
+.assist-options button:hover {
+  opacity: 0.9;
+}
+   
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">IPTV PREMIUM</div>
+
+  <!-- BOTÃO HAMBURGER -->
+  <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+    <i class="fas fa-bars"></i>
+  </button>
+
+<nav id="main-nav">
+  <img src="https://s14.gifyu.com/images/bHB2m.jpg" alt="Imagem de fundo do menu" class="menu-bg" />
+  <ul>
+    <!-- GRUPO 1 -->
+    <li><a href="#unitv"><i class="fa-solid fa-tv"></i> UniTV</a></li>
+    <li><a href="#youcine"><i class="fa-solid fa-film"></i> Youcine</a></li>
+
+    <!-- LINHA DIVISÓRIA -->
+    <li class="menu-divider"></li>
+
+    <!-- GRUPO 2 -->
+    <li><a href="#install"><i class="fa-solid fa-gears"></i> Instalação</a></li>
+    <li><a href="#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
+    <li><a href="#galeria"><i class="fa-solid fa-image"></i> Galeria</a></li>
+    <li><a href="#depoimentos"><i class="fa-solid fa-comment-dots"></i> Depoimentos</a></li>
+
+    <!-- LINHA DIVISÓRIA -->
+    <li class="menu-divider"></li>
+
+    <!-- GRUPO 3 -->
+    <li><a href="#termos"><i class="fa-solid fa-file-contract"></i> Termos</a></li>
+    <li><a href="#contato"><i class="fa-solid fa-phone"></i> Contato</a></li>
+  </ul>
+</nav>
+  
+</header>
+
+  <!-- Ícone Assistente Virtual -->
+  <div id="assist-icon" aria-label="Abrir assistência virtual" tabindex="0" role="button" title="Assistente Virtual">
+    💬
+    <span id="assist-tooltip">Olá! Sou sua assistente virtual</span>
+  </div>
+
+  <!-- Janela Assistente Virtual -->
+  <div id="assist-box" role="dialog" aria-modal="true" aria-labelledby="assist-title" hidden>
+    <div class="assist-header">
+      <h4 id="assist-title">Assistente Virtual IPTV</h4>
+      <button id="assist-close" aria-label="Fechar Assistência">✖</button>
+    </div>
+    <div class="assist-body" id="assist-messages">
+      <div class="msg bot">
+        Olá! Posso ajudar com esses apps:
+        <ul>
+          <li>📺 UniTV</li>
+          <li>🎬 Youcine</li>
+          <li>🍿 Eppi Cinema</li>
+          <li>📡 TV Express</li>
+        </ul>
+        Pergunte à vontade!
+      </div>     
+    </div>
+    <div class="assist-footer">
+      <input type="text" id="assist-input" placeholder="Digite sua pergunta..." autocomplete="off" />
+      <button id="assist-send" aria-label="Enviar mensagem">Enviar</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Baixe os melhores apps IPTV</h1>
+      <p>Para Android e TV Box com atualizações e conteúdos da mais alta qualidade.</p>
+      <a href="#apps" class="btn-primary">Ver Apps</a>
+    </div>
+  </section>
+
+  <main role="main" id="apps">
+    
+    <!-- NOVA SEÇÃO 1 -->
+    <section id="unitv">
+<h2 class="section-title" tabindex="0">Aplicativo uniTV</h2>
+<div class="apps-grid">
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+    <h3 class="app-title">uniTV celular ou tablet</h3>
+    <p class="app-desc">Tenha o UniTV no celular e assista tudo com qualidade, onde e quando quiser!</p>
+    <a href="https://www.unitvoficial.tv/unitv-celular.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-clapperboard"></i></div>
+    <h3 class="app-title">uniTV tv box</h3>
+    <p class="app-desc">Instale o UniTV na sua TV Box Android e aproveite filmes, séries e canais com navegação otimizada para TV!.</p>
+    <a href="https://www.unitvoficial.tv/unitv-tv.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-desktop"></i></div>
+    <h3 class="app-title">uniTV smart tv</h3>
+    <p class="app-desc">Disponível apenas para Smart TVs com sistema Android. TVs de outras marcas/sistemas operacionais não são compatíveis. Verifique sua TV antes de instalar o UniTV.</p>
+    <a href="https://www.unitvoficial.tv/unitv-tv.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-film"></i></div>
+    <h3 class="app-title">uniTV stick tv</h3>
+    <p class="app-desc">O UniTV Stick é um dispositivo portátil com sistema Android. Basta conectar na entrada HDMI da sua TV, parear com Wi-Fi e instalar o app. Ideal para quem quer praticidade e mobilidade no acesso ao conteúdo.</p>
+    <a href="https://www.unitvoficial.tv/unitv-tv.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+</div>
+
+<!-- NOVA SEÇÃO 2 -->
+      <section id="youcine">
+<h2 class="section-title" tabindex="0">Aplicativo Youcine</h2>
+<div class="apps-grid">
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+    <h3 class="app-title">Youcine celular ou tablet</h3>
+    <p class="app-desc">Filmes, séries e animes no seu celular com qualidade. Conteúdo dublado e legendado</p>
+    <a href="https://app.ycapk.online/app/cinetv_ycio-site.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-clapperboard"></i></div>
+    <h3 class="app-title">Youcine tv box</h3>
+    <p class="app-desc">Tenha acesso a filmes, séries e animes direto na sua TV Box. Qualidade HD, conteúdo atualizado.</p>
+    <a href="https://app.ycapk.online/app/cinetv_ycio-site.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-desktop"></i></div>
+    <h3 class="app-title">Youcine smart tv</h3>
+    <p class="app-desc">Assista diretamente na sua TV com sistema Android. Filmes, séries e animes com ótima qualidade e navegação fácil.</p>
+    <a href="https://app.ycapk.online/app/cinetv_ycio-site.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-film"></i></div>
+    <h3 class="app-title">Youcine stick tv</h3>
+    <p class="app-desc">Ideal para dispositivos com Android TV Stick. Curta filmes e séries com qualidade e leveza, direto na sua TV.</p>
+    <a href="https://app.ycapk.online/app/cinetv_ycio-site.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+</div>
+
+  </main>
+
+  <section class="install-section" id="install" aria-labelledby="install-title">
+    <h3 id="install-title" tabindex="0">Como Instalar</h3>
+    <ol class="install-steps">
+      <li>Baixe o arquivo APK clicando no botão "Baixar APK" do aplicativo desejado.</li>
+      <li>Permita a instalação de aplicativos de fontes desconhecidas nas configurações do seu Android.</li>
+      <li>Abra o arquivo APK baixado e siga as instruções para instalar o app.</li>
+      <li>Abra o aplicativo após instalar e tenha 7 dias de acesso gratuito.</li>
+      <li>briu o app? Ele já confere se tem atualização. Se tiver, é só atualizar e ser feliz!.</li>
+    </ol>
+  </section>
+
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <h3 id="faq-title" tabindex="0">Perguntas Frequentes</h3>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-btn">
+        O que é IPTV?
+      </button>
+      <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-btn">
+        IPTV é um serviço que permite assistir canais de TV e conteúdos, como filmes e séries, pela internet, usando dispositivos que sejam compatíveis, como Smart TVs, celulares, computadores, ou aparelhos especiais para TV.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-btn">
+        Preciso pagar para usar esses aplicativo?
+      </button>
+      <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-btn">
+         Sim, para acessar todos os conteúdos exclusivos e canais ao vivo dos aplicativos uniTV, Youcine é necessário adquirir uma assinatura ou licença.  
+    Essa assinatura garante acesso estável, atualizações constantes e suporte técnico para você aproveitar o melhor do entretenimento pela internet.
+      </div>
+    </div>
+
+       <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+        Existe algum teste grátis para experimentar os aplicativos?
+      </button>
+      <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+        Sim! Oferecemos um período de teste gratuito de 7 dias para que você possa experimentar os aplicativos como uniTV, Youcine sem compromisso.  
+    Assim, você pode conhecer a qualidade do serviço antes de decidir.
+      </div>
+    </div> 
+    
+         <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+         Os aplicativos funcionam em iPhone (iOS)?
+      </button>
+      <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+        No momento, esses aplicativos não são compatíveis com iPhone ou dispositivos iOS.  
+    Eles foram desenvolvidos para funcionar melhor em dispositivos com sistema ANDROID.
+      </div>
+    </div>   
+    
+        <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+        Esses aplicativos têm site para assistir pelo navegador?
+      </button>
+      <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+        Atualmente, os aplicativos uniTV, Youcine <strong>não oferecem acesso via site pelo navegador</strong>.<br><br>  
+    O acesso é feito principalmente por meio dos aplicativos instalados em dispositivos compatíveis, como Android, Smart TVs (via dispositivos externos) e outros aparelhos.  
+    Para melhor experiência, recomendamos usar os apps nos dispositivos indicados.
+      </div>
+    </div>
+    
+        <div class="faq-item">
+  <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+    Posso usar os aplicativos em PC ou notebook?
+  </button>
+  <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+    <p>Sim! Você pode acessar esses aplicativos em computadores Windows e notebooks usando emuladores Android.</p><br>
+
+    <p><strong>Principais emuladores recomendados:</strong></p><br>
+    <ul>
+      <li><strong>BlueStacks</strong> – Um dos emuladores mais populares, fácil de usar e estável.</li><br>
+      <li><strong>Nox Player</strong> – Leve, com boa performance e recursos para gamers.</li><br>
+      <li><strong>LDPlayer</strong> – Excelente para aplicativos e jogos, com bom suporte a múltiplas instâncias.</li><br>
+      <li><strong>Memu Play</strong> – Focado em alta performance e compatibilidade.</li><br>
+      <li><strong>Genymotion</strong> – Ideal para desenvolvedores, mas também pode ser usado para uso comum.</li><br>
+    </ul>
+
+    <p><strong>Observações importantes:</strong></p><br>
+    <ul>
+      <li>Os aplicativos não possuem versões oficiais para Windows.</li><br>
+      <li>O uso via emuladores é a alternativa mais comum para PC/notebook.</li><br>
+      <li>A qualidade da experiência depende do desempenho do seu computador e da sua conexão de internet.</li>
+    </ul>
+  </div>
+</div>
+    
+    <div class="faq-item">
+  <button class="faq-question" aria-expanded="false" aria-controls="faq-conteudo-adulto" id="faq-conteudo-adulto-btn">
+    Os aplicativos possuem conteúdo +18?
+  </button>
+  <div class="faq-answer" id="faq-conteudo-adulto" role="region" aria-labelledby="faq-conteudo-adulto-btn">
+    ✅ <strong>1. UniTV</strong><br>
+    Sim, possui conteúdo adulto. Normalmente tem uma categoria específica de canais ou vídeos adultos.<br>
+    ⚠️ Pode ser necessário ativar manualmente com senha (como controle dos pais).<br><br>
+
+    ✅ <strong>2. Youcine</strong><br>
+    Sim, possui seção de conteúdo adulto. Fica oculta por padrão e só aparece ao ativar nas configurações com senha.<br>
+    Voltado para +18 com vídeos sob demanda (on-demand). Muito usado em Android e TV Box.<br><br>
+
+    🔐 <strong>Importante:</strong><br>
+    Na maioria desses apps, o conteúdo adulto:
+    <ul>
+      <li>Vem bloqueado por padrão;</li>
+      <li>Pode ser ocultado ou controlado com senha;</li>
+      <li>Só aparece após ativação intencional nas configurações "Para usufruir".</li>
+    </ul>
+  </div>
+</div>
+    
+    <div class="faq-item">
+  <button class="faq-question" aria-expanded="false" aria-controls="faq-projetor" id="faq-projetor-btn">
+    Os aplicativos funcionam em projetores?
+  </button>
+  <div class="faq-answer" id="faq-projetor" role="region" aria-labelledby="faq-projetor-btn">
+    📽️ <strong>Sim, funcionam em projetores compatíveis!</strong><br><br>
+
+    ✅ <strong>Projetores com Android:</strong><br>
+    Se o projetor já vem com Android (igual a uma Smart TV), você pode instalar UniTV, Youcine, Eppi Cinema e TV Express diretamente nele, como em um celular.<br><br>
+
+    ✅ <strong>Projetores comuns (sem sistema):</strong><br>
+    Basta conectar um aparelho externo como:<br>
+    • Amazon Fire Stick<br>
+    • Google Chromecast<br>
+    • Xiaomi Mi TV Stick<br>
+    • TV Box Android<br><br>
+
+    O app será instalado no dispositivo, e o projetor só exibe a imagem via HDMI.<br><br>
+
+    ⚠️ <strong>Atenção:</strong><br>
+    - O projetor ou aparelho deve estar conectado à internet (Wi-Fi ou cabo).<br>
+    - Projetores antigos ou que não têm entrada HDMI podem não ser compatíveis.<br><br>
+
+    ✅ <strong>Resumo:</strong><br>
+    Qualquer projetor com Android ou que aceite HDMI e um dispositivo compatível pode rodar os apps perfeitamente!
+  </div>
+</div>
+    
+        <div class="faq-item">
+  <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+    Qual a velocidade de internet recomendada para usar esses aplicativos?
+  </button>
+  <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+    Para assistir aos conteúdos dos aplicativos UniTV, Youcine, Eppi Cinema e TV Xpress com boa qualidade e sem travamentos, recomendamos as seguintes velocidades:
+    <ol><br>
+      <li><strong>Resolução SD (qualidade básica):</strong> pelo menos 5 Mbps.</li><br>
+      <li><strong>Resolução HD (qualidade alta):</strong> pelo menos 10 Mbps.</li><br>
+      <li><strong>Resolução Full HD ou superior (1080p ou 4K):</strong> 20 Mbps ou mais.</li><br>
+    </ol>
+    <p>
+      Lembre-se que a estabilidade da conexão é tão importante quanto a velocidade.  
+      Conexões instáveis podem causar pausas ou interrupções no streaming.  
+      Uma conexão cabeada via cabo Ethernet costuma ser mais estável do que Wi-Fi.
+    </p>
+  </div>
+</div>
+    
+        <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+        O que é um aparelho stick?
+      </button>
+      <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+        Um aparelho STICK é um dispositivo pequeno, parecido com um pendrive, que você conecta na porta HDMI da sua TV. Ele transforma sua TV comum em uma Smart TV, permitindo que você acesse aplicativos, jogos, filmes e séries pela internet. Exemplos populares de sticks são:  
+    <ul><br>
+      <li>Amazon Fire Stick</li>
+      <li>Google Chromecast</li>
+      <li>Xiaomi Mi TV Stick</li>
+      <li>Roku Streaming Stick</li>
+    </ul><br>
+    Com um stick, você pode instalar os aplicativos uniTV, Youcine, Eppi, Cinema e TV Xpress e assistir facilmente na sua TV.
+  </div>
+      </div>
+    </div>
+    
+      <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+        Quais TVs são compatíveis com os aplicativos?
+      </button>
+      <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+        Esses aplicativos são compatíveis principalmente com TVs que permitem a instalação de aplicativos Android, como:  
+    <ul><br>
+      <li>Smart TVs com sistema Android TV (ex: algumas TVs Sony, Philips, TCL, Hisense)</li><br>
+      <li>TVs que podem ser conectadas a dispositivos externos Android TV Box, Fire Stick, Chromecast com Google TV, entre outros</li>
+    </ul><br>
+    TVs Samsung (Tizen) e LG (webOS) <strong>não possuem porque é outro sistema operacional</strong>, então nesses casos o ideal é usar um dispositivo externo para ter acesso aos apps e conteúdos como tv box ou stick.  
+    Assim, você garante a melhor experiência e acesso a todos os recursos.
+      </div>
+    </div>   
+
+  <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+        Não consigo baixar os aplicativos, o que fazer?
+      </button>
+      <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+        
+      <li><strong>Tente usar outro navegador:</strong> Recomendamos usar o Google Chrome ou Firefox, pois alguns navegadores bloqueiam o download de arquivos APK.</li><br>
+      <li><strong>Habilite a permissão para instalar apps de fontes desconhecidas:</strong> No Android, vá em <em>Configurações &gt; Segurança &gt; Fontes desconhecidas</em> e ative essa opção.</li><br>
+      <li><strong>Use outro dispositivo:</strong> Tente baixar o app em outro celular, TV Box ou tablet compatível, e depois transfira via cabo ou pendrive, se necessário.</li><br>
+      <li><strong>Confira sua conexão:</strong> Uma internet lenta ou instável pode interromper o download.</li><br>
+      <li><strong>Limpe o cache do navegador:</strong> Pode resolver falhas de carregamento do link.</li>
+    </ul><br>
+    Caso o problema persista, entre em contato comigo no final da pagina tem minhas rede social whatzapp.
+      </div>
+    </div>
+  
+    <div class="faq-item">
+  <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-btn">
+    Como faço para atualizar os aplicativos?
+  </button>
+  <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-btn">
+    📢 <strong>Atualizações automáticas</strong><br>
+    Os apps atualizam sozinhos assim que você entra neles.<br>
+    Se houver uma versão nova disponível, o app libera a atualização direto, sem você precisar baixar nada de novo.<br><br>
+    Assim, você sempre fica com a versão mais recente, sem complicação!
+  </div>
+</div>
+
+  </section> <!-- Fecha FAQ -->
+
+  <section class="gallery-section" id="galeria">
+    <h3 class="section-title" tabindex="0"> <!-- aqui vc apagar tudo e colocar um nome para galeria --></h3>
+
+    <div class="gallery-item">
+      <div class="gallery-text">
+        <h4>UniTV</h4>
+        <p>Com o UniTV, você assiste a canais de TV ao vivo com ótima estabilidade e variedade de conteúdo nacional e internacional.</p>
+      </div>
+      <div class="gallery-image">
+        <img src="https://s14.gifyu.com/images/bHBHc.webp" alt="Imagem do app UniTV" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-item reverse">
+      <div class="gallery-text">
+        <h4>Youcine</h4>
+        <p>Youcine é perfeito para quem ama filmes, séries, desenhos e esportes com uma interface amigável e fácil de usar.</p>
+      </div>
+      <div class="gallery-image">
+        <img src="https://s14.gifyu.com/images/bHBHH.png" alt="Imagem do app Youcine" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+<section id="depoimentos" class="testimonials-section">
+  <h3>Relatos de Usuários</h3>
+  <div class="testimonials-container">
+
+    <button class="testimonial-arrow prev" aria-label="Depoimento anterior">&#8592;</button>
+
+<div class="testimonials-wrapper">
+  <div class="testimonial active" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=10" alt="Foto do Eduardo Mendes" />
+    <p class="testimonial-text">"Serviço excelente, com ótima estabilidade e suporte eficiente. Recomendo para todos."</p>
+    <p class="testimonial-author">— Eduardo Mendes</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=12" alt="Foto da Fernanda Lima" />
+    <p class="testimonial-text">"A qualidade das imagens é impressionante, superou minhas expectativas."</p>
+    <p class="testimonial-author">— Fernanda Lima</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=14" alt="Foto do Ricardo Alves" />
+    <p class="testimonial-text">"Fácil instalação e uma variedade enorme de canais. Uso diariamente sem travar."</p>
+    <p class="testimonial-author">— Ricardo Alves</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=16" alt="Foto da Carolina Ferreira" />
+    <p class="testimonial-text">"A experiência no app é ótima, fluida e intuitiva. Atendimento rápido e cordial."</p>
+    <p class="testimonial-author">— Carolina Ferreira</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=18" alt="Foto do Marcos Souza" />
+    <p class="testimonial-text">"Nunca tive problemas de conexão, mesmo assistindo em dispositivos diferentes."</p>
+    <p class="testimonial-author">— Marcos Souza</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=20" alt="Foto da Juliana Costa" />
+    <p class="testimonial-text">"Recomendo para quem quer IPTV com ótimo custo-benefício e sem complicações."</p>
+    <p class="testimonial-author">— Juliana Costa</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=22" alt="Foto do André Lima" />
+    <p class="testimonial-text">"Conteúdos atualizados e muito variados, perfeita opção para toda família."</p>
+    <p class="testimonial-author">— André Lima</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=24" alt="Foto da Vanessa Ribeiro" />
+    <p class="testimonial-text">"Instalação simples, app leve e a qualidade de imagem é excelente."</p>
+    <p class="testimonial-author">— Vanessa Ribeiro</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=26" alt="Foto do Felipe Martins" />
+    <p class="testimonial-text">"O melhor serviço que já usei, sem interrupções e com muitos canais esportivos."</p>
+    <p class="testimonial-author">— Felipe Martins</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=28" alt="Foto da Patrícia Santos" />
+    <p class="testimonial-text">"Perfeito para assistir filmes e séries com qualidade e sem travamentos."</p>
+    <p class="testimonial-author">— Patrícia Santos</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=30" alt="Foto do Gabriel Oliveira" />
+    <p class="testimonial-text">"Serviço estável mesmo em conexões móveis, ideal para quem está sempre em movimento."</p>
+    <p class="testimonial-author">— Gabriel Oliveira</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=32" alt="Foto da Adriana Melo" />
+    <p class="testimonial-text">"Ótimo atendimento e sempre prontos para ajudar. Fiquei muito satisfeito."</p>
+    <p class="testimonial-author">— Adriana Melo</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=34" alt="Foto do Leonardo Costa" />
+    <p class="testimonial-text">"A qualidade do streaming é excelente, sem aquelas travadas irritantes."</p>
+    <p class="testimonial-author">— Leonardo Costa</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=36" alt="Foto da Paula Almeida" />
+    <p class="testimonial-text">"Grande variedade de canais, filmes e séries. Ideal para toda a família."</p>
+    <p class="testimonial-author">— Paula Almeida</p>
+  </div>
+
+  <div class="testimonial" tabindex="0">
+    <img src="https://i.pravatar.cc/100?img=38" alt="Foto do Ricardo Nunes" />
+    <p class="testimonial-text">"Instalação rápida e fácil, app super estável e suporte sempre disponível."</p>
+    <p class="testimonial-author">— Ricardo Nunes</p>
+  </div>
+</div>
+    
+    <button class="testimonial-arrow next" aria-label="Próximo depoimento">&#8594;</button>
+
+  </div>
+</section>
+  
+<section class="termos-section" id="termos">
+  <div class="termos-content" tabindex="0">
+    <h2 class="termos-title">Termos de Uso</h2>
+
+   <section id="introducao">
+  <h3>Apresentação Geral</h3>
+  <ul class="termos-list">
+    <li>
+      <p>
+        Bem-vindo ao nosso serviço. Ao utilizar nossa plataforma, você concorda com os termos aqui descritos.
+      </p>
+    </li>
+    <li>
+      <p>
+        Este site <strong>não vende</strong>, <strong>não revende</strong>, <strong>não distribui</strong> e <strong>não hospeda</strong> conteúdo de IPTV.
+      </p>
+    </li>
+    <li>
+      <p>
+        Nos isentamos de qualquer responsabilidade sobre o uso de aplicativos de terceiros apresentados neste site. Todo o conteúdo exibido possui caráter meramente <strong>informativo e educativo</strong>, com o objetivo de auxiliar os usuários por meio de tutoriais de instalação e configuração de apps públicos e legais.
+      </p>
+    </li>
+    <li>
+      <p>
+        Não incentivamos, promovemos ou facilitamos qualquer forma de <strong>pirataria digital</strong>. O uso de serviços de IPTV é de <strong>total responsabilidade do usuário</strong>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Ao continuar navegando, você reconhece que <strong>leu, compreendeu e concorda</strong> com estes termos.
+      </p>
+    </li>
+  </ul>
+</section>
+
+
+   <section id="uso">
+      <h3>Uso do Serviço</h3>
+      <ul class="termos-list">
+        <li>       
+          <div>
+            <p>É proibido utilizar o serviço para atividades ilegais, prejudiciais ou que violem direitos de terceiros.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="privacidade">
+      <h3>Privacidade</h3>
+      <ul class="termos-list">
+        <li>
+          <div>
+            <p>
+  Não sabemos se os aplicativos apresentados coletam dados pessoais. Recomendamos que o usuário consulte os sites oficiais de cada app para mais informações. Vale lembrar que nenhum dos aplicativos aqui exibidos é de nossa autoria — apenas reunimos em um só lugar para facilitar o acesso.
+</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="responsabilidades">
+      <h3>Responsabilidades</h3>
+      <ul class="termos-list">
+        <li>
+          <div>
+            <p>
+  Além disso, não nos responsabilizamos por eventuais falhas técnicas, interrupções no serviço ou qualquer uso indevido dos aplicativos de terceiros. O uso desses serviços é de total responsabilidade do consumidor.
+</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <p>Você é totalmente responsável pela segurança das suas contas, senhas e dados pessoais utilizados nos aplicativos e serviços acessados através do nosso site.</p>
+    </li>
+    <li> 
+      <p>Não nos responsabilizamos por quaisquer negociações, compras ou vendas feitas por meio dos aplicativos indicados aqui. Nosso papel é exclusivamente disponibilizar informações e links para facilitar o acesso aos apps, sempre respeitando as leis vigentes.</p>
+  <p>Mantenha-se atento a possíveis golpes, fraudes ou práticas suspeitas, pois a proteção da sua segurança digital depende exclusivamente de você.</p>
+</li>
+  </ul>
+</section>
+
+    <section id="cancelamento">
+      <h3>Cancelamento</h3>
+      <ul class="termos-list">
+        <li>
+          <div>
+  <p>Você pode cancelar sua assinatura a qualquer momento, conforme as opções disponíveis na plataforma, Nos isentamos de qualquer responsabilidade por cobranças feitas por terceiros, incluindo aplicativos, plataformas externas ou intermediários de pagamento. Todas as transações são de responsabilidade do usuário e do fornecedor.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+      </ul>
+  </section>
+  
+<section id="contato" class="contato-section">
+  <div class="contato-wrapper">
+
+    <!-- Ícones + contatos -->
+    <div class="contato-info">
+      <h2 class="contato-title">Fale Conosco</h2>
+      <ul class="contato-list">
+        <li>
+          <span class="contato-icon">📞</span>
+          <div>
+            <h4>Telefone</h4>
+            <p>(11) 9xxxx-xx77</p>
+          </div>
+        </li>
+        <li>
+          <span class="contato-icon">✉️</span>
+          <div>
+            <h4>Email</h4>
+            <p>wdappiptv@gmail.com</p>
+          </div>
+        </li>
+        <li>
+          <span class="contato-icon">📍</span>
+          <div>
+            <h4>Endereço</h4>
+            <p>Jerusalém, Rua C7 007 - Belém</p>
+          </div>
+        </li>
+        <li>
+          <span class="contato-icon">⏰</span>
+          <div>
+            <h4>Horário</h4>
+            <p>Seg a Seg: 9h às 23h</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Dois banners lado a lado -->
+    <div class="contato-banners">
+      <div class="contato-banner whatsapp-banner">
+        <h3>Fale Conosco no WhatsApp</h3>
+        <p>Envie sua mensagem diretamente pelo WhatsApp.</p>
+        <button class="btn-contato" onclick="window.open('https://wa.me/5511999999999', '_blank')">WhatsApp</button>
+      </div>
+      <div class="contato-banner telegram-banner">
+        <h3>Entre no Grupo do Telegram</h3>
+        <p>Participe da nossa comunidade no Telegram.</p>
+        <button class="btn-contato" onclick="window.open('https://t.me/seugrupo', '_blank')">Telegram</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+  
+  <!-- Redes Sociais -->
+<div class="redes-sociais">
+  <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+</svg>
+  </a>
+
+  <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+</svg>
+  </a>
+
+  <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+</svg>
+  </a>
+</div>
+  </div>
+</section>
+
+
+
+  <footer role="contentinfo">
+    &copy; 2025 IPTV Premium Brasil. Todos os direitos reservados.
+  </footer>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Seu script existente (FAQ, scroll, menu, galeria, depoimentos, termos)
+    const faqButtons = document.querySelectorAll(".faq-question");
+    const header = document.querySelector("header");
+    const sections = [
+      document.getElementById("apps"),
+      document.getElementById("install"),
+      document.getElementById("faq"),
+      document.getElementById("galeria"),
+      document.getElementById("depoimentos"),
+      document.getElementById("termos"),
+      document.getElementById("contato")
+    ];
+    const menuLinks = document.querySelectorAll("nav ul li a");
+
+    // FAQ toggle
+    faqButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const expanded = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", expanded ? "false" : "true");
+        const answer = button.nextElementSibling;
+        answer.classList.toggle("open");
+        answer.setAttribute("aria-hidden", expanded ? "true" : "false");
+      });
+    });
+
+    // ScrollSpy
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 30) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+      const scrollMiddle = window.innerHeight / 2;
+      let currentSectionId = "";
+
+      sections.forEach(section => {
+        if (!section) return;
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= scrollMiddle && rect.bottom >= scrollMiddle) {
+          currentSectionId = section.id;
+        }
+      });
+
+      menuLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentSectionId}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    window.dispatchEvent(new Event('scroll'));
+
+    // Menu mobile toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
+
+    menuToggle.addEventListener("click", () => {
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      nav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+    });
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (nav.classList.contains("open")) {
+          nav.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const isOpen = nav.classList.contains("open");
+      const clickedOutside = !nav.contains(event.target) && !menuToggle.contains(event.target);
+      if (isOpen && clickedOutside) {
+        nav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Galeria animação
+    const galleryItems = document.querySelectorAll(".gallery-item");
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const target = entry.target;
+          const text = target.querySelector(".gallery-text");
+
+          if (entry.isIntersecting) {
+            target.style.animationPlayState = "running";
+            if (text) text.style.animationPlayState = "running";
+          } else {
+            target.style.animationPlayState = "paused";
+            target.style.animation = 'none';
+            void target.offsetWidth;
+            target.style.animation = '';
+
+            if (text) {
+              text.style.animationPlayState = "paused";
+              text.style.animation = 'none';
+              void text.offsetWidth;
+              text.style.animation = '';
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+
+      galleryItems.forEach(item => {
+        item.style.animationPlayState = "paused";
+        const text = item.querySelector(".gallery-text");
+        if (text) text.style.animationPlayState = "paused";
+        observer.observe(item);
+      });
+    }
+
+    // DEPOIMENTOS
+    const testimonials = document.querySelectorAll(".testimonial");
+    const prevBtn = document.querySelector(".testimonial-arrow.prev");
+    const nextBtn = document.querySelector(".testimonial-arrow.next");
+    let currentTestimonial = 0;
+    let interval;
+
+    function showTestimonial(index) {
+      testimonials.forEach((el, i) => {
+        el.classList.toggle("active", i === index);
+      });
+    }
+
+    function nextTestimonial() {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }
+
+    function prevTestimonial() {
+      currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }
+
+    showTestimonial(currentTestimonial);
+    function startAutoplay() {
+      interval = setInterval(nextTestimonial, 4000);
+    }
+    function stopAutoplay() {
+      clearInterval(interval);
+    }
+    startAutoplay();
+
+    if (nextBtn && prevBtn) {
+      nextBtn.addEventListener("click", () => {
+        stopAutoplay();
+        nextTestimonial();
+        startAutoplay();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        stopAutoplay();
+        prevTestimonial();
+        startAutoplay();
+      });
+    }
+
+    // ==============================
+    // ASSISTENTE VIRTUAL COMPLETO COM BOTÕES SIM/NÃO
+    // ==============================
+
+      const assistBtn = document.getElementById("assist-icon");
+  const assistTooltip = document.getElementById("assist-tooltip");
+  const assistBox = document.getElementById("assist-box");
+  const assistClose = document.getElementById("assist-close");
+  const assistSend = document.getElementById("assist-send");
+  const assistInput = document.getElementById("assist-input");
+  const assistMessages = document.getElementById("assist-messages");
+
+  setTimeout(() => assistTooltip.classList.add("show"), 1500);
+  setTimeout(() => assistTooltip.classList.remove("show"), 6000);
+
+  assistBtn.addEventListener("click", () => {
+    assistBox.hidden = !assistBox.hidden;
+    if (!assistBox.hidden) assistInput.focus();
+  });
+
+  assistClose.addEventListener("click", () => {
+    assistBox.hidden = true;
+    assistInput.value = "";
+  });
+
+  // Fluxos com múltiplas etapas para cada app, com botões SIM/NÃO
+  const fluxos = {
+    unitv: [
+      {
+        texto: `📺 <strong>Análise Realista do UniTV – Vale a pena?</strong><br>
+        O UniTV é um aplicativo IPTV voltado para quem busca assistir canais de TV ao vivo, filmes, séries e até eventos esportivos diretamente do celular, TV Box ou Smart TV com Android. A proposta é simples: entregar uma experiência parecida com a da TV a cabo tradicional, só que via internet e sem burocracia.<br><br>
+        Mas será que o app cumpre o que promete? Aqui vai um review sincero.<br><br>
+        <strong>Deseja continuar sabendo sobre UniTV?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `✅ <strong>Pontos Positivos</strong><br>
+        1. Variedade de canais: O UniTV oferece uma grande quantidade de canais brasileiros e internacionais, com categorias como esportes, filmes, infantis, documentários e abertos. Canais populares como Globo, SBT, Record, ESPN, SporTV, Cartoon Network, Telecine, entre outros, estão presentes na maioria das listas.<br>
+        2. Interface simples e direta: A interface do aplicativo é prática e fácil de entender, o que facilita bastante para pessoas que não têm tanta familiaridade com tecnologia. Mesmo quem está começando no mundo do IPTV consegue usar sem dificuldade.<br>
+        3. Qualidade de imagem: A maioria dos canais oferece transmissões em qualidade SD e HD, e alguns até em Full HD. Obviamente, a qualidade pode variar dependendo da sua velocidade de internet e da estabilidade do servidor naquele momento.<br>
+        4. Compatibilidade com diversos dispositivos: Funciona em celulares Android, TV Box, Fire Stick e Smart TVs com Android. Isso é ótimo para quem quer transformar a TV antiga em uma central multimídia.<br><br>
+        <strong>Quer saber mais sobre os Pontos Positivos?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `🧾 <strong>Conclusão: Vale a pena?</strong><br>
+        O UniTV é um ótimo app para quem quer acesso completo a canais de TV e conteúdos diversos sem pagar caro em planos de operadoras. Mas é importante entender que ele não é perfeito e depende muito da internet e da estabilidade dos servidores. Para quem já está acostumado com IPTV, é uma escolha sólida. Para iniciantes, é importante ter alguém para ajudar com a instalação e configuração.<br><br>
+        Se você quer uma solução econômica, versátil e está disposto a lidar com pequenos contratempos de vez em quando, o UniTV pode ser exatamente o que você procura.<br><br>
+        <strong>Quer falar com atendimento particular?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `📱 <strong>Fico feliz em atender você!</strong> <br>
+        Clique no link abaixo para falar diretamente comigo no WhatsApp:<br>
+        <a href="https://wa.me/5511999999999?text=Olá,%20estou%20interessado%20no%20UniTV.%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener" class="whatsapp-button">Falar no WhatsApp</a>`,
+        botoes: false
+      }
+    ],
+
+    youcine: [
+      {
+        texto: `🎬 <strong>Análise Realista do Youcine – Vale a pena?</strong><br>
+        O Youcine é um aplicativo focado em oferecer filmes, séries e alguns eventos ao vivo para usuários que buscam entretenimento via IPTV. Seu grande diferencial é a interface amigável e a variedade de conteúdo, incluindo títulos nacionais e internacionais.<br><br>
+        Mas será que o Youcine realmente entrega uma experiência estável e com boa qualidade? Aqui está uma avaliação transparente.<br><br>
+        <strong>Quer continuar conhecendo o Youcine?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `✅ <strong>Pontos Positivos do Youcine</strong><br>
+        1. Conteúdo diversificado: O Youcine disponibiliza muitos filmes e séries de vários gêneros, além de canais ao vivo para esportes e entretenimento.<br>
+        2. Interface simples: O app é fácil de navegar, ideal para quem não é muito familiarizado com tecnologia.<br>
+        3. Compatibilidade: Funciona bem em celulares Android, TV Box e Smart TVs Android.<br>
+        4. Atualizações frequentes: O catálogo é atualizado regularmente, o que ajuda a manter o interesse do usuário.<br><br>
+        <strong>Quer saber os pontos negativos?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `⚠️ <strong>Pontos a Melhorar no Youcine</strong><br>
+        1. Estabilidade: Alguns usuários relatam travamentos e falhas ocasionais, especialmente em conexões mais lentas.<br>
+        2. Qualidade de streaming: Embora haja conteúdo em HD, nem todos os filmes e séries possuem qualidade alta constante.<br>
+        3. Suporte limitado: A assistência ao usuário pode ser lenta ou pouco eficaz em alguns casos.<br>
+        4. Legalidade: Como muitos apps IPTV, o Youcine pode ter questões relacionadas a direitos autorais, então é importante usar com consciência.<br><br>
+        <strong>Quer a conclusão completa?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `🧾 <strong>Conclusão sobre o Youcine</strong><br>
+        O Youcine é uma opção interessante para quem quer acesso rápido a uma boa variedade de filmes e séries, além de canais ao vivo. É indicado para usuários que valorizam uma interface simples e atualizações constantes.<br><br>
+        Contudo, é importante saber que a estabilidade e qualidade podem variar conforme sua conexão e o servidor, e que suporte pode não ser tão rápido.<br><br>
+        Se você está buscando uma alternativa acessível para entretenimento online e entende esses riscos, o Youcine pode valer a pena.<br><br>
+        <strong>Quer falar com atendimento particular?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `📱 <strong>Fico feliz em ajudar você!</strong> <br>
+        Para mais informações, clique no link abaixo e fale comigo direto no WhatsApp:<br>
+        <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20o%20Youcine." target="_blank" rel="noopener" class="whatsapp-button">Falar no WhatsApp</a>`,
+        botoes: false
+      }
+    ],
+
+    eppi: [
+      {
+        texto: `🍿 <strong>Análise do Eppi Cinema – Conteúdo para toda a família</strong><br>
+        O Eppi Cinema oferece uma vasta seleção de filmes lançamentos dublados e legendados, ideais para toda a família. Disponível para Android e Smart TVs, ele promete qualidade e diversidade.<br><br>
+        Gostaria de saber mais sobre o Eppi Cinema?`,
+        botoes: true
+      },
+      {
+        texto: `✅ <strong>Pontos Fortes do Eppi Cinema</strong><br>
+        1. Catálogo atualizado frequentemente com lançamentos.<br>
+        2. Conteúdo dublado e legendado.<br>
+        3. Interface simples e funcional.<br><br>
+        Quer saber sobre possíveis limitações?`,
+        botoes: true
+      },
+      {
+        texto: `⚠️ <strong>Limitações do Eppi Cinema</strong><br>
+        1. Alguns filmes podem não estar disponíveis o tempo todo.<br>
+        2. Dependência da conexão para boa qualidade.<br><br>
+        Quer a conclusão final?`,
+        botoes: true
+      },
+      {
+        texto: `🧾 <strong>Conclusão</strong><br>
+        O Eppi Cinema é uma boa escolha para quem quer assistir lançamentos com qualidade, especialmente para uso familiar.<br><br>
+        <strong>Quer falar com atendimento particular?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `📱 <strong>Estou aqui para ajudar!</strong><br>
+        Clique no link para atendimento personalizado via WhatsApp:<br>
+        <a href="https://wa.me/5511999999999?text=Olá,%20quero%20mais%20informações%20sobre%20o%20Eppi%20Cinema." target="_blank" rel="noopener" class="whatsapp-button">Falar no WhatsApp</a>`,
+        botoes: false
+      }
+    ],
+
+    express: [
+      {
+        texto: `📡 <strong>Análise do TV Express – Milhares de canais atualizados</strong><br>
+        O TV Express oferece uma grande variedade de canais ao vivo e conteúdos atualizados diariamente, com foco em qualidade e diversidade.<br><br>
+        Gostaria de saber mais sobre o TV Express?`,
+        botoes: true
+      },
+      {
+        texto: `✅ <strong>Pontos Positivos do TV Express</strong><br>
+        1. Grande variedade de canais ao vivo.<br>
+        2. Conteúdo atualizado constantemente.<br>
+        3. Fácil instalação e uso.<br><br>
+        Quer saber sobre possíveis desvantagens?`,
+        botoes: true
+      },
+      {
+        texto: `⚠️ <strong>Desvantagens do TV Express</strong><br>
+        1. Qualidade pode variar conforme conexão.<br>
+        2. Alguns canais podem apresentar instabilidades.<br><br>
+        Quer a conclusão final?`,
+        botoes: true
+      },
+      {
+        texto: `🧾 <strong>Conclusão</strong><br>
+        O TV Express é ideal para quem busca muitos canais ao vivo e conteúdos atualizados diariamente, com boa compatibilidade.<br><br>
+        <strong>Quer falar com atendimento particular?</strong>`,
+        botoes: true
+      },
+      {
+        texto: `📱 <strong>Estou pronto para ajudar!</strong><br>
+        Clique no link para atendimento personalizado via WhatsApp:<br>
+        <a href="https://wa.me/5511999999999?text=Olá,%20quero%20mais%20informações%20sobre%20o%20TV%20Express." target="_blank" rel="noopener" class="whatsapp-button">Falar no WhatsApp</a>`,
+        botoes: false
+      }
+    ]
+  };
+
+  let fluxoAtual = null;
+  let etapaAtual = 0;
+
+  function mostrarMensagem(texto, comBotoes = false) {
+    const botMsg = document.createElement("div");
+    botMsg.classList.add("msg", "bot");
+    botMsg.innerHTML = texto;
+
+    if (comBotoes) {
+      const botoesContainer = document.createElement("div");
+      botoesContainer.classList.add("assist-options");
+
+      const yesBtn = document.createElement("button");
+      yesBtn.classList.add("assist-yes");
+      yesBtn.textContent = "Sim";
+
+      const noBtn = document.createElement("button");
+      noBtn.classList.add("assist-no");
+      noBtn.textContent = "Não";
+
+      botoesContainer.appendChild(yesBtn);
+      botoesContainer.appendChild(noBtn);
+      botMsg.appendChild(botoesContainer);
+
+      function disableButtons() {
+        yesBtn.disabled = true;
+        noBtn.disabled = true;
+        yesBtn.style.opacity = "0.6";
+        noBtn.style.opacity = "0.6";
+      }
+
+      yesBtn.addEventListener("click", () => {
+        disableButtons();
+
+        const typingMsg = document.createElement("div");
+        typingMsg.classList.add("msg", "bot", "typing");
+        typingMsg.textContent = "Assistente digitando...";
+        assistMessages.appendChild(typingMsg);
+        assistMessages.scrollTop = assistMessages.scrollHeight;
+
+        setTimeout(() => {
+          assistMessages.removeChild(typingMsg);
+
+          etapaAtual++;
+          if (etapaAtual >= fluxoAtual.length) etapaAtual = fluxoAtual.length -1;
+          mostrarMensagem(fluxoAtual[etapaAtual].texto, fluxoAtual[etapaAtual].botoes);
+        }, 2500);
+      });
+
+      noBtn.addEventListener("click", () => {
+        disableButtons();
+
+        const typingMsg = document.createElement("div");
+        typingMsg.classList.add("msg", "bot", "typing");
+        typingMsg.textContent = "Assistente digitando...";
+        assistMessages.appendChild(typingMsg);
+        assistMessages.scrollTop = assistMessages.scrollHeight;
+
+        setTimeout(() => {
+          assistMessages.removeChild(typingMsg);
+
+          const resposta = document.createElement("div");
+          resposta.classList.add("msg", "bot");
+          resposta.textContent = "Ok, obrigado! Estarei aqui sempre que precisar.";
+          assistMessages.appendChild(resposta);
+          assistMessages.scrollTop = assistMessages.scrollHeight;
+
+          fluxoAtual = null;
+          etapaAtual = 0;
+        }, 2500);
+      });
+    }
+
+    assistMessages.appendChild(botMsg);
+    assistMessages.scrollTop = assistMessages.scrollHeight;
+  }
+
+  function botResponse(msg) {
+    msg = msg.toLowerCase();
+
+    if (msg.includes("unitv") || msg.includes("uni tv")) {
+      fluxoAtual = fluxos.unitv;
+      etapaAtual = 0;
+      return fluxoAtual[etapaAtual].texto;
+    } else if (msg.includes("youcine")) {
+      fluxoAtual = fluxos.youcine;
+      etapaAtual = 0;
+      return fluxoAtual[etapaAtual].texto;
+    } else if (msg.includes("eppi")) {
+      fluxoAtual = fluxos.eppi;
+      etapaAtual = 0;
+      return fluxoAtual[etapaAtual].texto;
+    } else if (msg.includes("express") || msg.includes("tv express")) {
+      fluxoAtual = fluxos.express;
+      etapaAtual = 0;
+      return fluxoAtual[etapaAtual].texto;
+    } else {
+      fluxoAtual = null;
+      etapaAtual = 0;
+      return `
+        Desculpe, posso responder apenas sobre UniTV, Youcine, Eppi Cinema e TV Express.<br />
+        <a href='https://wa.me/5511999999999' target='_blank' class='whatsapp-button'>Fale com nosso atendente via WhatsApp</a>
+      `;
+    }
+  }
+
+  function sendMessage() {
+    const userText = assistInput.value.trim();
+    if (!userText) return;
+
+    const userMsg = document.createElement("div");
+    userMsg.classList.add("msg", "user");
+    userMsg.textContent = userText;
+    assistMessages.appendChild(userMsg);
+
+    assistInput.value = "";
+
+    const typingMsg = document.createElement("div");
+    typingMsg.classList.add("msg", "bot", "typing");
+    typingMsg.textContent = "Assistente digitando...";
+    assistMessages.appendChild(typingMsg);
+    assistMessages.scrollTop = assistMessages.scrollHeight;
+
+    setTimeout(() => {
+      assistMessages.removeChild(typingMsg);
+
+      const response = botResponse(userText);
+
+      if (fluxoAtual && etapaAtual === 0) {
+        mostrarMensagem(response, fluxoAtual[etapaAtual].botoes);
+      } else {
+        mostrarMensagem(response, false);
+      }
+    }, 2500);
+  }
+
+  assistSend.addEventListener("click", sendMessage);
+  assistInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") sendMessage();
+  });
+    
+    // ============================
+    // Termos Section e sidebar (mantidas)
+    // ============================
+
+    const termosSection = document.getElementById("termos");
+    const sidebarLinks = document.querySelectorAll(".termos-sidebar a");
+    const termosContentSections = Array.from(sidebarLinks).map(link => {
+      const id = link.getAttribute("href").slice(1);
+      return document.getElementById(id);
+    });
+
+    function setActiveSidebarLink() {
+      const scrollPos = window.scrollY + window.innerHeight / 3;
+      let currentIndex = 0;
+
+      termosContentSections.forEach((section, i) => {
+        if (section && section.offsetTop <= scrollPos) {
+          currentIndex = i;
+        }
+      });
+
+      sidebarLinks.forEach(link => link.classList.remove("active"));
+      if (sidebarLinks[currentIndex]) sidebarLinks[currentIndex].classList.add("active");
+    }
+
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").slice(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    window.addEventListener("scroll", setActiveSidebarLink);
+    setActiveSidebarLink();
+
+    const contentSections = document.querySelectorAll(".termos-content section");
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      contentSections.forEach(section => {
+        observer.observe(section);
+      });
+    }
+
+    if ('IntersectionObserver' in window && termosSection) {
+      const observerTermos = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            termosSection.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observerTermos.observe(termosSection);
+    }
+  });
+</script>
+</body>
+</html>
